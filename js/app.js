@@ -45,6 +45,13 @@ function personName(p) {
   return '';
 }
 
+// Título do bloco de renda: "Renda de Ana" quando há nome; senão, frase natural.
+function incomeTitle(p) {
+  const n = p === 1 ? S().name1 : S().name2;
+  if (n && n.trim()) return `Renda de ${n.trim()}`;
+  return p === 1 ? 'Sua renda' : 'Renda da outra pessoa';
+}
+
 let toastTimer;
 function toast(msg, action) {
   const t = $('#toast');
@@ -170,6 +177,7 @@ function refresh() {
   });
   if (view === 'reserva') updateReserva(c);
   $$('[data-person-label]').forEach(el => (el.textContent = personName(Number(el.dataset.personLabel))));
+  $$('[data-income-title]').forEach(el => (el.textContent = incomeTitle(Number(el.dataset.incomeTitle))));
 }
 
 // ---------------------------------------------------------------- telas
@@ -277,8 +285,8 @@ function viewEntradas() {
   const m = cur();
   const s = S();
   const groups = [
-    [1, `Renda de <span data-person-label="1"></span>`],
-    ...(s.twoPeople ? [[2, `Renda de <span data-person-label="2"></span>`]] : []),
+    [1, `<span data-income-title="1"></span>`],
+    ...(s.twoPeople ? [[2, `<span data-income-title="2"></span>`]] : []),
     [0, 'Rendas extras'],
   ];
   return `
