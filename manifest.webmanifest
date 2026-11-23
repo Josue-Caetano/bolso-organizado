@@ -1,0 +1,14 @@
+{
+  "name": "Bolso Organizado",
+  "short_name": "Bolso",
+  "description": "Organize entradas e despesas e veja quanto sobra no fim do mês.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f5f1",
+  "theme_color": "#1f9d6b",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

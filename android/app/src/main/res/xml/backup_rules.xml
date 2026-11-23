@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 8–11: inclui os dados do app (meses salvos) no backup automático do Google. -->
+<full-backup-content />

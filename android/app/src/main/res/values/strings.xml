@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Bolso Organizado</string>
+    <string name="file_saved">Arquivo salvo!</string>
+    <string name="file_error">Não foi possível salvar o arquivo.</string>
+    <string name="no_app_for_link">Nenhum app encontrado para abrir o link.</string>
+    <string name="choose_backup">Escolha o backup (.json)</string>
+</resources>

@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'br.app.organizadorfinanceiro'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'br.app.organizadorfinanceiro'
+        minSdk 26          // Android 8.0+
+        targetSdk 36
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.activity:activity:1.10.1'
+    implementation 'androidx.core:core:1.16.0'
+    implementation 'androidx.webkit:webkit:1.13.0'
+}
+
+// ---------------------------------------------------------------------------
+// O site (index.html, css/, js/, icons/) fica na raiz do repositório e é a
+// ÚNICA fonte do app. A cada build ele é copiado para assets/www do APK,
+// então qualquer mudança no site entra automaticamente no próximo APK.
+// ---------------------------------------------------------------------------
+abstract class CopyWebAssets extends DefaultTask {
+    @Internal
+    abstract DirectoryProperty getWebRoot()
+
+    @Input
+    abstract ListProperty<String> getIncludes()
+
+    @InputFiles
+    @PathSensitive(PathSensitivity.RELATIVE)
+    abstract ConfigurableFileCollection getWebFiles()
+
+    @OutputDirectory
+    abstract DirectoryProperty getOutputDir()
+
+    @javax.inject.Inject
+    abstract FileSystemOperations getFs()
+
+    @TaskAction
+    void copy() {
+        File root = webRoot.get().asFile
+        List<String> patterns = includes.get()
+        File dest = outputDir.get().dir('www').asFile
+        fs.sync { spec ->
+            spec.from(root) { it.include(patterns) }
+            spec.into(dest)
+        }
+    }
+}
+
+def webIncludes = ['index.html', 'manifest.webmanifest', 'css/**', 'js/**', 'icons/**']
+def webRootDir = rootProject.layout.projectDirectory.dir('..')
+
+def copyWebAssets = tasks.register('copyWebAssets', CopyWebAssets) {
+    webRoot.set(webRootDir)
+    includes.set(webIncludes)
+    webFiles.from(fileTree(webRootDir) { include webIncludes })
+}
+
+androidComponents {
+    onVariants(selector().all(), { variant ->
+        variant.sources.assets?.addGeneratedSourceDirectory(copyWebAssets, { it.outputDir })
+    })
+}

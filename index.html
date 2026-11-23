@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bolso Organizado · seu dinheiro mês a mês</title>
+  <meta name="description" content="Organize entradas e despesas, veja quanto sobra no fim do mês e calcule sua reserva de emergência. Seus dados ficam só no seu aparelho.">
+  <meta name="theme-color" content="#f5c400">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    // aplica o tema antes de pintar a página (evita "piscar")
+    try { const t = JSON.parse(localStorage.getItem('pp-organizador-v1') || '{}')?.settings?.theme; if (t && t !== 'auto') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="icons/icon.svg" alt="" width="36" height="36">
+      <div>
+        <strong>Bolso Organizado</strong>
+        <small>seu dinheiro mês a mês</small>
+      </div>
+    </div>
+
+    <div class="month-nav" role="group" aria-label="Mês selecionado">
+      <button class="icon-btn" id="prevMonth" aria-label="Mês anterior">‹</button>
+      <button class="month-label" id="monthLabel" aria-label="Escolher mês"></button>
+      <button class="icon-btn" id="nextMonth" aria-label="Próximo mês">›</button>
+      <input type="month" id="monthPicker" class="visually-hidden" tabindex="-1" aria-hidden="true">
+    </div>
+
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Alternar tema" title="Tema claro/escuro">◐</button>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Seções">
+    <button data-view="resumo" class="active"><span class="ico" aria-hidden="true">📊</span><span>Resumo</span></button>
+    <button data-view="entradas"><span class="ico" aria-hidden="true">💰</span><span>Entradas</span></button>
+    <button data-view="despesas"><span class="ico" aria-hidden="true">🧾</span><span>Despesas</span></button>
+    <button data-view="reserva"><span class="ico" aria-hidden="true">🛟</span><span>Reserva</span></button>
+    <button data-view="historico"><span class="ico" aria-hidden="true">📅</span><span>Histórico</span></button>
+    <button data-view="sobre"><span class="ico" aria-hidden="true">ℹ️</span><span>Sobre</span></button>
+  </nav>
+
+  <!-- barra de resumo ao vivo, aparece nas telas de edição -->
+  <div class="live-bar" id="liveBar" hidden>
+    <div><small>Entradas</small><b data-bind="entradas"></b></div>
+    <div><small>Despesas</small><b data-bind="despesas"></b></div>
+    <div class="live-sobra"><small>Sobra</small><b data-bind="sobra"></b></div>
+  </div>
+
+  <main id="main" tabindex="-1"></main>
+
+  <footer class="site-footer">
+    <p>Bolso Organizado: seus dados ficam só neste aparelho. <a href="#" data-goto="sobre">Sobre o app</a></p>
+  </footer>
+
+  <div id="sheet" class="sheet" hidden></div>
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="printReport" class="print-report" aria-hidden="true"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
