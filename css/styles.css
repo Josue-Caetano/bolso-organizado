@@ -47,7 +47,7 @@
   --bg: #111110; --surface: #1a1a19; --surface-2: #232321;
   --text: #f0efec; --text-2: #c3c2b7; --muted: #9a998f;
   --line: #2c2c2a; --ring: rgba(255, 255, 255, .10);
-  --brand-soft: #2e2806;
+  --brand-soft: #0f2b20;
   --s-in: #3987e5; --s-ess: #d95926; --s-nao: #199e70;
   --good: #0ca30c; --good-bg: #0f2a0f; --warning: #fab219; --warning-bg: #2e2510;
   --critical: #e66767; --critical-bg: #331616; --info: #6da7ec; --info-bg: #142338;
@@ -447,7 +447,7 @@ body.sheet-open { overflow: hidden; }
   .print-report {
     display: block; font-size: 10.5px; line-height: 1.35; color: #111;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
-    --p-in: #2a78d6; --p-ess: #eb6834; --p-nao: #1baf7a; --p-brand: #f5c400; --p-line: #dedcd3; --p-soft: #f6f5f1;
+    --p-in: #2a78d6; --p-ess: #eb6834; --p-nao: #1baf7a; --p-brand: #1f9d6b; --p-line: #dedcd3; --p-soft: #f6f5f1;
   }
   .print-report .s-ess { background: var(--p-ess); }
   .print-report .s-nao { background: var(--p-nao); }

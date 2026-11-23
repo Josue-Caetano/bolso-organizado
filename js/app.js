@@ -83,7 +83,7 @@ function applyTheme() {
   else document.documentElement.dataset.theme = t;
   const dark = t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
   $('#themeBtn').textContent = dark ? '☀︎' : '☾';
-  $('meta[name="theme-color"]').content = dark ? '#151514' : '#f5c400';
+  $('meta[name="theme-color"]').content = dark ? '#151514' : '#1f9d6b';
   nativeSend({ type: 'theme', dark });
 }
 $('#themeBtn').onclick = () => {

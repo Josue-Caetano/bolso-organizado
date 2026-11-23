@@ -138,12 +138,12 @@ public class MainActivity extends ComponentActivity {
         }
     }
 
-    /** Topo sempre amarelo (ícones escuros); rodapé acompanha o tema claro/escuro do app. */
+    /** Topo sempre verde (ícones claros); rodapé acompanha o tema claro/escuro do app. */
     private void applyBarAppearance(boolean dark) {
         navBarBg.setBackgroundColor(getColor(dark ? R.color.surface_dark : R.color.surface));
         webView.setBackgroundColor(getColor(dark ? R.color.surface_dark : R.color.surface));
         WindowInsetsControllerCompat c = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
-        c.setAppearanceLightStatusBars(true);
+        c.setAppearanceLightStatusBars(false);
         c.setAppearanceLightNavigationBars(!dark);
     }
 

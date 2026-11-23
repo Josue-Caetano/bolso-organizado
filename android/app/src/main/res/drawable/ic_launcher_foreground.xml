@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Mesmo desenho do icons/icon.svg do site: três barras subindo + moeda. Área segura: 66dp centrais. -->
+<!-- Mesmo desenho do icons/icon.svg do site: carteira branca sobre fundo verde. Área segura: 66dp centrais. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <path android:fillColor="#0B0B0B" android:fillAlpha="0.35"
-        android:pathData="M33,60h9a2,2 0,0 1,2 2v14h-13v-14a2,2 0,0 1,2 -2z" />
-    <path android:fillColor="#0B0B0B" android:fillAlpha="0.6"
-        android:pathData="M48,50h9a2,2 0,0 1,2 2v24h-13v-24a2,2 0,0 1,2 -2z" />
-    <path android:fillColor="#0B0B0B" android:fillAlpha="0.85"
-        android:pathData="M63,44h9a2,2 0,0 1,2 2v30h-13v-30a2,2 0,0 1,2 -2z" />
-    <path android:fillColor="#0B0B0B"
-        android:pathData="M72,30m-9,0a9,9 0,1 1,18 0a9,9 0,1 1,-18 0" />
-    <path android:fillColor="#F5C400"
-        android:pathData="M72,30m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0" />
-    <path android:fillColor="#0B0B0B"
-        android:pathData="M72,30m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <!-- corpo da carteira -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M34,38h40a5,5 0,0 1,5 5v26a9,9 0,0 1,-9 9h-32a9,9 0,0 1,-9 -9v-26a5,5 0,0 1,5 -5z" />
+    <!-- aba da carteira -->
+    <path android:strokeColor="#1F9D6B" android:strokeWidth="3.5" android:strokeLineCap="round"
+        android:pathData="M29,46c10,8 40,8 50,0" />
+    <!-- moeda -->
+    <path android:fillColor="#1F9D6B"
+        android:pathData="M54,64m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M54,64m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
 </vector>
