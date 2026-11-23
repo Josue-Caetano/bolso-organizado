@@ -1,5 +1,5 @@
 <resources>
-    <!-- Tema sem barra de título; o próprio site desenha o topo amarelo. -->
+    <!-- Tema sem barra de título; o próprio site desenha o topo verde. -->
     <style name="Theme.Organizador" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowBackground">@color/brand</item>
         <item name="android:statusBarColor">@android:color/transparent</item>

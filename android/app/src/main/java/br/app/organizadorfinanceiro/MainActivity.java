@@ -94,7 +94,7 @@ public class MainActivity extends ComponentActivity {
         LinearLayout column = new LinearLayout(this);
         column.setOrientation(LinearLayout.VERTICAL);
 
-        // Faixas atrás da barra de status (topo amarelo) e da barra de navegação/teclado
+        // Faixas atrás da barra de status (topo verde) e da barra de navegação/teclado
         statusBarBg = new View(this);
         statusBarBg.setBackgroundColor(brand);
         navBarBg = new View(this);
